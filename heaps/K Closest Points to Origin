@@ -1,0 +1,31 @@
+class Solution {
+public:
+  int dist( vector<int> &point ) {
+        return point[0]*point[0] + point[1]*point[1];    
+    }
+    
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int K) {
+        typedef pair<int, int> pi;
+        
+        int distance;
+        priority_queue< pi > maxHeap; // <distance, index> pair
+        
+        // classic format of sorting in heap followed
+        for( int i=0; i < points.size(); i++ ) {
+            distance = dist( points[i] );
+           
+                maxHeap.push( { distance, i } );
+            
+            if(maxHeap.size()>K) {
+                maxHeap.pop();
+            }
+        }
+        
+        vector<vector<int>> result;
+        while( !maxHeap.empty() ) {
+            result.push_back( points[ maxHeap.top().second ] );
+            maxHeap.pop();
+        }
+        return result;
+    }
+};
