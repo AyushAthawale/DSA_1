@@ -44,7 +44,7 @@ class Solution {
                     //this stor the list of coordinates 
                     vector<pair<int,int>> vec;
                     
-                    dfs(i,j,vsi,grid,vec,i,j);
+                    dfs(i,j,vis,grid,vec,i,j);
                     st.insert(vec);
                 }
             }
